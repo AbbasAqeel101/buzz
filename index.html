@@ -423,15 +423,19 @@
         <span class="text_button">تثبيت التطبيق</span>
     </button>
 
-    <script>
-        document.getElementById('installBtn').addEventListener('click', function(e) {
-            e.preventDefault();
+    document.getElementById('installBtn').addEventListener('click', function(e) {
+            e.preventDefault(); // يمنع السلوك الافتراضي للرابط (التنقل مباشرة)
 
+            // **** هذا هو المكان الذي تم فيه وضع الرابط الذي طلبته ****
             const plistLink = 'itms-services://?action=download-manifest&url=https://appmaster-buz.netlify.app/manifest.plist';
+
+            // رابط قناة التليجرام التي يتم التحويل إليها بعد محاولة التثبيت
             const telegramLink = 'https://t.me/Appmasster';
 
+            // يبدأ محاولة تثبيت التطبيق
             window.location.href = plistLink;
 
+            // بعد 1.5 ثانية (1500 مللي ثانية)، يتم التحويل إلى رابط التليجرام
             setTimeout(function() {
                 window.location.href = telegramLink;
             }, 1500);
